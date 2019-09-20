@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <div class="for-group row search-header">
+        <span class="col-sm-6"><strong>Place and Date Information
+            </strong></span>
+        <div class="col-sm-6 text-right">
+            <a href="javascript:void(0)" class="btn btn-success" (click)="getWeatherHistory()">Get Weather History</a>
+        </div>
+    </div>
+    <div class="search-body">
+        <form>
+            <div class="form-group row">
+                <label for="cityName" class="col-sm-2 col-form-label text-right">City Name</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="cityName" [(ngModel)]="cityName">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="startDate" class="col-sm-2 col-form-label text-right">Start Date</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="startDate" [(ngModel)]="startDate">
+                </div>
+                <span class="col-sm-3"></span>
+            </div>
+            <div class="form-group row">
+                <label for="endDate" class="col-sm-2 col-form-label text-right">End Date</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="endDate" [(ngModel)]="endDate">
+                </div>
+                <span class="col-sm-3"></span>
+            </div>
+        </form>
+    </div>
+    <app-data-grid *ngIf="weatherList" [columns]="columns" [records]="weatherList"></app-data-grid>
+    <ng-template #minmaxtemp let-item>
+        <span>{{item.mintemp}}/{{item.maxtemp}}</span>
+    </ng-template>
+</div>

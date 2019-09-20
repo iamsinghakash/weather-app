@@ -1,0 +1,25 @@
+<div class="table-wrapper">
+    <div class="table-action text-center mt-10">
+        <button class="btn btn-sm btn-primary d-inline-block m-3">Save</button>
+        <button class="btn btn-sm btn-info d-inline-block m-3">Export to PDF</button>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let column of columns">
+                <span [innerHTML]="column.headerText"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of records">
+            <td *ngFor="let column of columns">
+                <span *ngIf="!column.template">{{record[column.dataKey]}}</span>
+                <span *ngIf="column.template">
+                    <ng-template [ngTemplateOutlet]="column.template" [ngTemplateOutletContext]="{$implicit:record}"></ng-template>
+                </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
